@@ -108,10 +108,9 @@ namespace _LFP_Practica1_201403541
         {
             Scanner valor = new Scanner();
 
-            for (int i = 0; i < tabControl1.TabCount; i++)
-            {
-                valor.Lexico(tabControl1.Controls[0].Text);
-            }
+            RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
+            valor.Lexico(texto.Text);
+            valor.VerReportes();
         }
     }
 }

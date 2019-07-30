@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace _LFP_Practica1_201403541
 {
@@ -121,6 +123,7 @@ namespace _LFP_Practica1_201403541
                         break;
                 }
             }
+            MessageBox.Show("Analisis Concluido");
         }
 
         public void AnalizarTkn(string tkn)
@@ -180,6 +183,37 @@ namespace _LFP_Practica1_201403541
             aux.fila = fila;
             aux.columna = columna;
             ListaA.Add(aux);            
-        }        
-    }
+        }
+
+        public void Reporte1()
+        {
+            try
+            {
+                MessageBox.Show("Espere en un momento se abrira el reporte de token´s", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Reportes.Html item = new Reportes.Html();
+                item.ReporteToken(ListaA);
+                Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteToken.html");
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No se pudo abrir el reporte de Token´s","Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }                        
+        }
+
+        public void Reporte2()
+        {
+            try
+            {
+                MessageBox.Show("Espere en un momento se abrira el reporte de errores", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Reportes.Html html = new Reportes.Html();
+                html.ReporteEtoken(ListaB);
+                Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteErrores.html");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No se pudo abrir el reporte de errores o no hay errores", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }    
 }
