@@ -106,9 +106,11 @@ namespace _LFP_Practica1_201403541
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Scanner valor = new Scanner();
+
             for (int i = 0; i < tabControl1.TabCount; i++)
             {
-
+                valor.Lexico(tabControl1.Controls[0].Text);
             }
         }
     }
