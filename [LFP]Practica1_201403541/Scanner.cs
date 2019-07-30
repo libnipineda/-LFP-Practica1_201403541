@@ -123,7 +123,7 @@ namespace _LFP_Practica1_201403541
                         break;
                 }
             }
-            MessageBox.Show("Analisis Concluido");
+            MessageBox.Show("Analisis Concluido","Información", MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         public void AnalizarTkn(string tkn)

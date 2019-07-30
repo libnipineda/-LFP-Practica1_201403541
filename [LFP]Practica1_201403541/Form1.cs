@@ -14,6 +14,7 @@ namespace _LFP_Practica1_201403541
     public partial class Form1 : Form
     {
         int a = 2; // Genera las pestañas
+        
 
         public Form1()
         {
@@ -110,7 +111,142 @@ namespace _LFP_Practica1_201403541
 
             RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
             valor.Lexico(texto.Text);
-            valor.VerReportes();
+            valor.Reporte1();
+            valor.Reporte2();
+            Pintar();
         }
-    }
+
+        // Codigo para pintar las palbras
+
+        string valor; int indice;
+
+        public void Pintar()
+        {
+          string comparar = richTextBox1.Text;            
+
+            valor = "Planificador";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaReservadas(indice, comparar);
+
+            valor = "Año";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaReservadas(indice, comparar);
+
+
+            valor = "Mes";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaReservadas(indice, comparar);
+
+            valor = "Dia";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaReservadas(indice, comparar);
+
+            valor = "Descripción";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaReservadas(indice, comparar);
+
+            valor = "Imagen";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaReservadas(indice, comparar);
+
+
+            valor = "0";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "1";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "2";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "3";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "4";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "5";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "6";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "7";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "8";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+            valor = "9";
+            indice = richTextBox1.Text.IndexOf(valor);
+            pintaNumeros(indice, comparar);
+
+        }
+
+        public void pintaReservadas(int pintar, String comparar)
+        {
+            indice = pintar + valor.Length - 1;
+            try
+            {
+                richTextBox1.Select(pintar, valor.Length);
+                richTextBox1.SelectionColor = Color.Blue;
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+
+                comparar = richTextBox1.Text.Substring(pintar + valor.Length);
+                pintar = comparar.IndexOf(valor) + pintar + valor.Length;
+
+                if (pintar != indice)
+                {
+                    pintaReservadas(pintar, comparar);
+                }
+                else
+                {
+                    indice = 0;
+                }
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show("No se pudo pintar las palabras", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+            }
+        }
+
+        public void pintaNumeros(int pindice, String comparar)
+        {
+            try
+            {
+                indice = pindice + valor.Length - 1;
+
+                richTextBox1.Select(pindice, valor.Length);
+                richTextBox1.SelectionColor = Color.Purple;
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+
+                comparar = richTextBox1.Text.Substring(pindice + valor.Length);
+                pindice = comparar.IndexOf(valor) + pindice + valor.Length;
+
+                if (pindice != indice)
+                {
+                    pintaNumeros(pindice,comparar);
+                }
+                else
+                {
+                    indice = 0;
+                }
+            }
+            catch (Exception)
+            {
+
+                //MessageBox.Show("No se pudo pintar los numeros", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+    }    
 }
