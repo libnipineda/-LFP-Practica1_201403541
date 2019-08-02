@@ -48,18 +48,18 @@ namespace _LFP_Practica1_201403541.Reportes
         }        
 
 
-        public void ReporteEtoken(List<Listas.Elista> datos)
+        public void ReporteEtoken(List<Listas.Elista> valor)
         {
-            if (datos.Count !=0)
+            if (valor.Count !=0)
             {
-                for (int i=0; i < datos.Count; i++)
+                for (int i=0; i < valor.Count; i++)
                 {
                     Etabla = Etabla + "<tr>"
-                        + "<td><strong>" + datos[i].num + "</strong></td>"
-                        + "<td><strong>" + datos[i].fil + "</strong></td>"
-                        + "<td><strong>" + datos[i].col + "</strong></td>"
-                        + "<td><strong>" + datos[i].lex + "</strong></td>"
-                        + "<td><strong>" + datos[i].Etkn + "</strong></td>"
+                        + "<td><strong>" + valor[i].num + "</strong></td>"
+                        + "<td><strong>" + valor[i].fil + "</strong></td>"
+                        + "<td><strong>" + valor[i].col + "</strong></td>"
+                        + "<td><strong>" + valor[i].lex + "</strong></td>"
+                        + "<td><strong>" + valor[i].Etkn + "</strong></td>"
                         + "</tr>";
                 }
             }
@@ -82,7 +82,7 @@ namespace _LFP_Practica1_201403541.Reportes
                 ,"</table>"
                 ,"</body>"
                 ,"</html> " };
-            System.IO.File.WriteAllLines(@"C:\Users\Aarón\Desktop\ReporteErroresTokens.html", text);
+            System.IO.File.WriteAllLines(@"C:\Users\libni\OneDrive\Escritorio\ReporteError.html", text);
         }
     }
 }

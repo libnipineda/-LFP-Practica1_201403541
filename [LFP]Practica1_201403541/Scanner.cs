@@ -17,7 +17,7 @@ namespace _LFP_Practica1_201403541
         int nutknen = 0;
         int idtkns = 10; // numero de tokens
         int fila = 0; int columna = 0;
-        string lexema = ""; string token = "";
+        string token = "";
         String concatenar = ""; String Etoken = "";
 
 
@@ -52,13 +52,13 @@ namespace _LFP_Practica1_201403541
                         else
                         {
                             Etoken += cadena[i];
-                            Listas.Elista aux = new Listas.Elista();
-                            aux.num = nutknen;
-                            aux.fil = fila;
-                            aux.col = columna;
-                            aux.lex = Etoken;
-                            aux.Etkn = "Valor Desconocido";                            
-                            ListaB.Add(aux); nutknen++; concatenar = ""; Etoken = "";
+                            Listas.Elista temp = new Listas.Elista();
+                            temp.num = nutknen;
+                            temp.fil = fila;
+                            temp.col = columna;
+                            temp.lex = "" + Etoken;
+                            temp.Etkn = "Valor Desconocido";
+                            ListaB.Add(temp); nutknen++; concatenar = ""; Etoken = "";
                         }
                         break;
 
@@ -208,12 +208,18 @@ namespace _LFP_Practica1_201403541
                 MessageBox.Show("Espere en un momento se abrira el reporte de errores", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reportes.Html html = new Reportes.Html();
                 html.ReporteEtoken(ListaB);
-                Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteErrores.html");
+                Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteError.html");
             }
             catch (Exception)
             {
                 MessageBox.Show("No se pudo abrir el reporte de errores o no hay errores", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-    }    
+        }        
+
+        public void EnviarDatos()
+        {
+            Funcionalidad fun = new Funcionalidad();
+            fun.ObtenerDatos(ListaA);
+        }        
+    }
 }

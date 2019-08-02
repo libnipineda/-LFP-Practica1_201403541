@@ -107,22 +107,23 @@ namespace _LFP_Practica1_201403541
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //Pintar();
             Scanner valor = new Scanner();
+            Funcionalidad fun = new Funcionalidad();
 
             RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
             valor.Lexico(texto.Text);
-            valor.Reporte1();
-            valor.Reporte2();
-            Pintar();
+            //valor.Reporte1();
+            //valor.Reporte2();            
+            Console.WriteLine("valor de la variable: "+fun.nombre);
         }
-
-        // Codigo para pintar las palbras
-
+        
+        // Codigo para pintar las palbras        
         string valor; int indice;
 
         public void Pintar()
         {
-          string comparar = richTextBox1.Text;            
+          string comparar = richTextBox1.Text;
 
             valor = "Planificador";
             indice = richTextBox1.Text.IndexOf(valor);
@@ -188,8 +189,7 @@ namespace _LFP_Practica1_201403541
 
             valor = "9";
             indice = richTextBox1.Text.IndexOf(valor);
-            pintaNumeros(indice, comparar);
-
+            pintaNumeros(indice, comparar);            
         }
 
         public void pintaReservadas(int pintar, String comparar)
@@ -215,7 +215,7 @@ namespace _LFP_Practica1_201403541
             }
             catch (Exception)
             {
-                //MessageBox.Show("No se pudo pintar las palabras", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+                Console.WriteLine("Error en metodo pintaReservadas");                
             }
         }
 
@@ -243,10 +243,36 @@ namespace _LFP_Practica1_201403541
             }
             catch (Exception)
             {
-
-                //MessageBox.Show("No se pudo pintar los numeros", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error en metodo pintaNumeros");                
             }
         }
 
+        public void pintaCadena(int pindice, String comparar)
+        {
+            try
+            {
+                indice = pindice + valor.Length - 1;
+
+                richTextBox1.Select(pindice, valor.Length);
+                richTextBox1.SelectionColor = Color.Orange;
+                richTextBox1.SelectionStart = richTextBox1.Text.Length;
+
+                comparar = richTextBox1.Text.Substring(pindice + valor.Length);
+                pindice = comparar.IndexOf(valor) + pindice + valor.Length;
+
+                if (pindice != indice)
+                {
+                    pintaCadena(pindice, comparar);
+                }
+                else
+                {
+                    indice = 0;
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Error en metodo pintaCadena");
+            }
+        }
     }    
 }

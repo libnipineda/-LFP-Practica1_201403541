@@ -14,16 +14,45 @@ namespace _LFP_Practica1_201403541.Listas
         public string tkn = "";
         public int fila = 0;
         public int columna = 0;
-        
+
+        public Lista(int numero, string lexema, int idtkn, string tkn, int fila, int columna)
+        {
+            this.numero = numero;
+            this.lexema = lexema;
+            this.idtkn = idtkn;
+            this.tkn = tkn;
+            this.fila = fila;
+            this.columna = columna;
+        }
 
         public int getNumero()
         {
-            return numero;
+            return this.numero;
         }
 
         public string getLexema()
         {
-            return lexema;
+            return this.lexema;
+        }
+
+        public int getidtkn()
+        {
+            return this.idtkn;
+        }
+
+        public string gettkn()
+        {
+            return this.tkn;
+        }
+
+        public int getfila()
+        {
+            return this.fila;
+        }
+
+        public int getcolumna()
+        {
+            return this.columna;
         }
     }
 
