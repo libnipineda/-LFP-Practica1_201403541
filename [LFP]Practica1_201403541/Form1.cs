@@ -109,13 +109,11 @@ namespace _LFP_Practica1_201403541
         {
             //Pintar();
             Scanner valor = new Scanner();
-            Funcionalidad fun = new Funcionalidad();
 
             RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
             valor.Lexico(texto.Text);
-            //valor.Reporte1();
-            //valor.Reporte2();            
-            Console.WriteLine("valor de la variable: "+fun.nombre);
+            valor.Reporte1();
+            valor.Reporte2();
         }
         
         // Codigo para pintar las palbras        

@@ -11,7 +11,7 @@ namespace _LFP_Practica1_201403541
     class Scanner
     {
         List<Listas.Lista> ListaA = new List<Listas.Lista>();
-        List<Listas.Elista> ListaB = new List<Listas.Elista>();
+        List<Listas.Elista> ListaB = new List<Listas.Elista>();        
 
         int idtkn;
         int nutknen = 0;
@@ -124,6 +124,7 @@ namespace _LFP_Practica1_201403541
                 }
             }
             MessageBox.Show("Analisis Concluido","Información", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            EnviarDatos();
         }
 
         public void AnalizarTkn(string tkn)
@@ -175,9 +176,9 @@ namespace _LFP_Practica1_201403541
 
         public void AgregarListaA(int num,string lexema, int idtkn, string tkn,int fila,int columna)
         {
-            Listas.Lista aux = new Listas.Lista();
+            Listas.Lista aux = new Listas.Lista(num,lexema,idtkn,tkn,fila,columna);
             aux.numero = num;
-            aux.lexema = lexema;
+            aux.lexema = lexema.Trim();
             aux.idtkn = idtkn;
             aux.tkn = tkn;
             aux.fila = fila;
@@ -192,8 +193,7 @@ namespace _LFP_Practica1_201403541
                 MessageBox.Show("Espere en un momento se abrira el reporte de token´s", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reportes.Html item = new Reportes.Html();
                 item.ReporteToken(ListaA);
-                Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteToken.html");
-                
+                Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteToken.html");                
             }
             catch (Exception)
             {
@@ -219,7 +219,7 @@ namespace _LFP_Practica1_201403541
         public void EnviarDatos()
         {
             Funcionalidad fun = new Funcionalidad();
-            fun.ObtenerDatos(ListaA);
+            fun.ObtenerDatos(ListaA);            
         }        
     }
 }

@@ -11,33 +11,113 @@ namespace _LFP_Practica1_201403541
         public string nombre, descripcion;
         public int año, mes, dia;
 
-        Boolean insertar = false, insertar1 = false, sinsertar = false;
+
+        Boolean inom = false, sinom = false,iaño = false, sinaño = false, imes = false, sinmes = false, idias = false, sindias = false;
 
         public void ObtenerDatos(List<Listas.Lista> listas)
         {
             foreach (var item in listas)
             {
-                String temp = item.lexema.Trim();
-
-                if (temp.Equals("Planificador"))
+                // obtener nombre de la planificación
+                if (item.lexema.Equals("Planificador"))
                 {
-                    sinsertar = true;
+                    sinom = true;
                 }
-                if (sinsertar)
+                if (sinom)
+                {
+                    if (item.lexema.Equals(":"))
+                    {
+                        inom = true;
+                        sinom = false;
+                    }
+                }
+                if (inom)
                 {
                     if (item.tkn.Equals("Cadena"))
                     {
-                        insertar = true;
-                        sinsertar = false;
+                        nombre = item.lexema;
+                        inom = false;
+                        sinom = false;
                     }
                 }
-                if (insertar)
+
+                //Obtener año
+                if (item.lexema.Equals("Año"))
                 {
-                    nombre = item.lexema;
-                    insertar = false;
+                    sinaño = true;
                 }
+                if (sinaño)
+                {
+                    if (item.lexema.Equals(":"))
+                    {
+                        sinaño = false;
+                        iaño = true;
+                    }
+                }
+                if (iaño)
+                {
+                    if (item.tkn.Equals("Numero."))
+                    {
+                        año = Convert.ToInt16(item.lexema);
+                        iaño = false;
+                        sinaño = false;
+                    }
+                }
+
+                //Obtener mes
+                if (item.lexema.Equals("Mes"))
+                {
+                    sinmes = true;
+                }
+                if (sinmes)
+                {
+                    if (item.lexema.Equals(":"))
+                    {
+                        imes = true;
+                        sinmes = false;
+                    }
+                }
+                if (imes)
+                {
+                    if (item.tkn.Equals("Numero."))
+                    {
+                        mes = Convert.ToInt16(item.lexema);
+                        imes = false;
+                        sinmes = false;
+                    }
+                }
+
+                //Obtener dia
+                if (item.lexema.Equals("Dia"))
+                {
+                    sindias = true;
+                }
+                if (sindias)
+                {
+                    if (item.lexema.Equals(":"))
+                    {
+                        sindias = false;
+                        idias = true;
+                    }
+                }
+                if (item.tkn.Equals("Numero."))
+                {
+                    dia = Convert.ToInt16(item.lexema);
+                    sindias = false;
+                    idias = false;
+                }
+
+
+                MostrarDatos();
             }
         }
 
+        public void MostrarDatos()
+        {
+            Console.WriteLine("nombre de la planificación: " + nombre);
+            Console.WriteLine("año: " + año);
+            Console.WriteLine("mes: " + mes);
+            Console.WriteLine("dia: " + dia);
+        }
     }
 }

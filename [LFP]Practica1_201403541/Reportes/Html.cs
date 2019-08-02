@@ -28,7 +28,7 @@ namespace _LFP_Practica1_201403541.Reportes
 
             string[] texto = { "<html>"
                     ,"<head>"
-                ,"<title>TABLA DE TOKEN´S</title>"
+                ,"<title>TABLA DE TOKEN'S</title>"
                 ,"</head>"
                 ,"<body>"
                 ,"<h1> LFP PRACTICA NO.1 Listado de Tokens</h1>"
