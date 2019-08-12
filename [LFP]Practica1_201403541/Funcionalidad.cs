@@ -21,7 +21,7 @@ namespace _LFP_Practica1_201403541
                 // obtener nombre de la planificación
                 if (item.lexema.Equals("Planificador"))
                 {
-                    sinom = true;
+                    sinom = true;                    
                 }
                 if (sinom)
                 {
@@ -36,8 +36,7 @@ namespace _LFP_Practica1_201403541
                     if (item.tkn.Equals("Cadena"))
                     {
                         nombre = item.lexema;
-                        inom = false;
-                        sinom = false;
+                        inom = false;                        
                     }
                 }
 
@@ -59,8 +58,7 @@ namespace _LFP_Practica1_201403541
                     if (item.tkn.Equals("Numero."))
                     {
                         año = Convert.ToInt16(item.lexema);
-                        iaño = false;
-                        sinaño = false;
+                        iaño = false;                        
                     }
                 }
 
@@ -82,8 +80,7 @@ namespace _LFP_Practica1_201403541
                     if (item.tkn.Equals("Numero."))
                     {
                         mes = Convert.ToInt16(item.lexema);
-                        imes = false;
-                        sinmes = false;
+                        imes = false;                        
                     }
                 }
 
@@ -100,24 +97,28 @@ namespace _LFP_Practica1_201403541
                         idias = true;
                     }
                 }
-                if (item.tkn.Equals("Numero."))
+                if (idias)
                 {
-                    dia = Convert.ToInt16(item.lexema);
-                    sindias = false;
-                    idias = false;
+                    if (item.tkn.Equals("Numero."))
+                    {
+                        dia = Convert.ToInt16(item.lexema);
+                        sindias = false;                        
+                    }
                 }
-
-
                 MostrarDatos();
             }
         }
 
         public void MostrarDatos()
         {
+            Form1 form = new Form1();
+
             Console.WriteLine("nombre de la planificación: " + nombre);
             Console.WriteLine("año: " + año);
             Console.WriteLine("mes: " + mes);
             Console.WriteLine("dia: " + dia);
+
+            form.AgregarDatos(nombre,año,mes,dia);
         }
     }
 }

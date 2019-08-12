@@ -107,13 +107,15 @@ namespace _LFP_Practica1_201403541
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Pintar();
+            Pintar();
             Scanner valor = new Scanner();
 
             RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
             valor.Lexico(texto.Text);
-            valor.Reporte1();
-            valor.Reporte2();
+            //valor.Reporte1();
+            //valor.Reporte2();
+            valor.EnviarDatos();
+            NodoNombre();
         }
         
         // Codigo para pintar las palbras        
@@ -271,6 +273,22 @@ namespace _LFP_Practica1_201403541
             {
                 Console.WriteLine("Error en metodo pintaCadena");
             }
+        }
+
+        // Treeview        
+        String hola; int year, month, day;
+        public void AgregarDatos(String dato,int año, int mes, int dia)
+        {
+            hola = dato;
+            year = año;
+            month = mes;
+            day = dia;
+        }
+
+        public void NodoNombre()
+        {
+            TreeNode node = new TreeNode(hola);
+            treeView1.Nodes.Add(node);            
         }
     }    
 }

@@ -41,7 +41,8 @@ namespace _LFP_Practica1_201403541
                         {
                             estado = 2; concatenar += cadena[i]; columna++;
                         }
-                        else if (((char)58).Equals(cadena[i]) || ((char)123).Equals(cadena[i]) || ((char)125).Equals(cadena[i])) // signo dos puntos, llave A y llave C
+                        else if (((char)58).Equals(cadena[i]) || ((char)123).Equals(cadena[i]) || ((char)125).Equals(cadena[i]) || ((char)40).Equals(cadena[i]) || ((char)41).Equals(cadena[i]) || ((char)60).Equals(cadena[i]) || ((char)62).Equals(cadena[i])
+                            || ((char)59).Equals(cadena[i]) || ((char)91).Equals(cadena[i]) || ((char)93).Equals(cadena[i])) // signo dos puntos, llave A, llave C, parentisisA, parentisisC, <, >, punto y coma, corcheteA y corcheteC
                         {
                             estado = 3; concatenar += cadena[i]; columna++;
                         }
@@ -123,8 +124,7 @@ namespace _LFP_Practica1_201403541
                         break;
                 }
             }
-            MessageBox.Show("Analisis Concluido","Información", MessageBoxButtons.OK,MessageBoxIcon.Information);
-            EnviarDatos();
+            MessageBox.Show("Analisis Concluido","Información", MessageBoxButtons.OK,MessageBoxIcon.Information);            
         }
 
         public void AnalizarTkn(string tkn)
