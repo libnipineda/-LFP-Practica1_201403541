@@ -12,7 +12,7 @@ namespace _LFP_Practica1_201403541
         public int año, mes, dia;
 
 
-        Boolean inom = false, sinom = false,iaño = false, sinaño = false, imes = false, sinmes = false, idias = false, sindias = false;
+        Boolean inom = false, sinom = false, iaño = false, sinaño = false, imes = false, sinmes = false, idias = false, sindias = false;
 
         public void ObtenerDatos(List<Listas.Lista> listas)
         {
@@ -21,7 +21,7 @@ namespace _LFP_Practica1_201403541
                 // obtener nombre de la planificación
                 if (item.lexema.Equals("Planificador"))
                 {
-                    sinom = true;                    
+                    sinom = true;
                 }
                 if (sinom)
                 {
@@ -36,7 +36,7 @@ namespace _LFP_Practica1_201403541
                     if (item.tkn.Equals("Cadena"))
                     {
                         nombre = item.lexema;
-                        inom = false;                        
+                        inom = false;
                     }
                 }
 
@@ -58,7 +58,7 @@ namespace _LFP_Practica1_201403541
                     if (item.tkn.Equals("Numero."))
                     {
                         año = Convert.ToInt16(item.lexema);
-                        iaño = false;                        
+                        iaño = false;
                     }
                 }
 
@@ -80,7 +80,7 @@ namespace _LFP_Practica1_201403541
                     if (item.tkn.Equals("Numero."))
                     {
                         mes = Convert.ToInt16(item.lexema);
-                        imes = false;                        
+                        imes = false;
                     }
                 }
 
@@ -102,11 +102,11 @@ namespace _LFP_Practica1_201403541
                     if (item.tkn.Equals("Numero."))
                     {
                         dia = Convert.ToInt16(item.lexema);
-                        sindias = false;                        
+                        sindias = false;
                     }
                 }
-                MostrarDatos();
             }
+            MostrarDatos();
         }
 
         public void MostrarDatos()

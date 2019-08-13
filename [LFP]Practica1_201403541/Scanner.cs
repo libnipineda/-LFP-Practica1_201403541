@@ -193,7 +193,8 @@ namespace _LFP_Practica1_201403541
                 MessageBox.Show("Espere en un momento se abrira el reporte de token´s", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reportes.Html item = new Reportes.Html();
                 item.ReporteToken(ListaA);
-                Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteToken.html");                
+                EnviarDatos();
+                Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteToken.html");
             }
             catch (Exception)
             {

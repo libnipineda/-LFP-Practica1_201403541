@@ -27,32 +27,32 @@ namespace _LFP_Practica1_201403541.Listas
 
         public int getNumero()
         {
-            return this.numero;
+            return numero;
         }
 
         public string getLexema()
         {
-            return this.lexema;
+            return lexema;
         }
 
         public int getidtkn()
         {
-            return this.idtkn;
+            return idtkn;
         }
 
         public string gettkn()
         {
-            return this.tkn;
+            return tkn;
         }
 
         public int getfila()
         {
-            return this.fila;
+            return fila;
         }
 
         public int getcolumna()
         {
-            return this.columna;
+            return columna;
         }
     }
 

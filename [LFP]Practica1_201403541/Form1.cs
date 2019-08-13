@@ -112,10 +112,9 @@ namespace _LFP_Practica1_201403541
 
             RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
             valor.Lexico(texto.Text);
-            //valor.Reporte1();
+            valor.Reporte1();
             //valor.Reporte2();
-            valor.EnviarDatos();
-            NodoNombre();
+            
         }
         
         // Codigo para pintar las palbras        
@@ -283,12 +282,15 @@ namespace _LFP_Practica1_201403541
             year = año;
             month = mes;
             day = dia;
+            Console.WriteLine("Form1 metodo agregar datos nombre: " + hola + " año: " + year + " mes: "+ month + " dia: "+day);
         }
 
         public void NodoNombre()
         {
-            TreeNode node = new TreeNode(hola);
-            treeView1.Nodes.Add(node);            
+            TreeNode nodo = new TreeNode();
+            nodo.Text = hola;
+            treeView1.Nodes.Add(nodo);
+            treeView1.Nodes.Add(Convert.ToString(year));
         }
     }    
 }
