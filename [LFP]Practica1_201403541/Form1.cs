@@ -282,7 +282,7 @@ namespace _LFP_Practica1_201403541
             year = año;
             month = mes;
             day = dia;
-            Console.WriteLine("Form1 metodo agregar datos nombre: " + hola + " año: " + year + " mes: "+ month + " dia: "+day);
+            Console.WriteLine("Form1 metodo agregar datos nombre: " + hola + " año: " + year + " mes: "+ month + " dia: "+day);            
         }
 
         public void NodoNombre()
