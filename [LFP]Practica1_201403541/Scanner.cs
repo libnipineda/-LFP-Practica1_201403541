@@ -11,7 +11,7 @@ namespace _LFP_Practica1_201403541
     class Scanner
     {
         List<Listas.Lista> ListaA = new List<Listas.Lista>();
-        List<Listas.Elista> ListaB = new List<Listas.Elista>();        
+        List<Listas.Elista> ListaB = new List<Listas.Elista>();
 
         int idtkn;
         int nutknen = 0;

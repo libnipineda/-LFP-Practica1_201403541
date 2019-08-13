@@ -118,7 +118,7 @@ namespace _LFP_Practica1_201403541
             Console.WriteLine("mes: " + mes);
             Console.WriteLine("dia: " + dia);
 
-            form.AgregarDatos(nombre,año,mes,dia);
+            form.AgregarDatos(nombre,año,mes,dia);            
         }
     }
 }

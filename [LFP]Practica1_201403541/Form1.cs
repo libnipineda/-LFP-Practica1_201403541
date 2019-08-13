@@ -19,6 +19,7 @@ namespace _LFP_Practica1_201403541
         public Form1()
         {
             InitializeComponent();
+            treeView1.Nodes.Clear();
         }
 
         private void nuevaPestañaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -35,6 +36,12 @@ namespace _LFP_Practica1_201403541
             this.tabControl1.TabPages.Add(pagina); // agrega la pestaña
             this.tabControl1.SelectedTab = pagina; // agrega la superficie donde se ingresan los datos
             a++; //Contador para generar pestañas
+
+            List<Listas.Lista> ListaA = new List<Listas.Lista>();
+            List<Listas.Elista> ListaB = new List<Listas.Elista>();
+
+            ListaA.Clear();
+            ListaB.Clear();
         }
 
         private void cargarArchivoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,15 +121,15 @@ namespace _LFP_Practica1_201403541
             valor.Lexico(texto.Text);
             valor.Reporte1();
             //valor.Reporte2();
-            
+            NodoRaiz();
         }
         
         // Codigo para pintar las palbras        
         string valor; int indice;
 
         public void Pintar()
-        {
-          string comparar = richTextBox1.Text;
+        {            
+            string comparar = richTextBox1.Text;
 
             valor = "Planificador";
             indice = richTextBox1.Text.IndexOf(valor);
@@ -282,15 +289,15 @@ namespace _LFP_Practica1_201403541
             year = año;
             month = mes;
             day = dia;
-            Console.WriteLine("Form1 metodo agregar datos nombre: " + hola + " año: " + year + " mes: "+ month + " dia: "+day);            
+            //Console.WriteLine("Form1 metodo agregar datos nombre: " + hola + " año: " + year + " mes: "+ month + " dia: "+day);                 
         }
 
-        public void NodoNombre()
+        public void NodoRaiz()
         {
-            TreeNode nodo = new TreeNode();
-            nodo.Text = hola;
-            treeView1.Nodes.Add(nodo);
-            treeView1.Nodes.Add(Convert.ToString(year));
+            // ------------------- Funcionamiento del TreeView1 -------------------
+            treeView1.BeginUpdate();
+            treeView1.Nodes.Add("Hola esto es una prueba");
+            treeView1.EndUpdate();            
         }
     }    
 }
