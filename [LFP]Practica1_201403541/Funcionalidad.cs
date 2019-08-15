@@ -8,117 +8,163 @@ namespace _LFP_Practica1_201403541
 {
     class Funcionalidad
     {
-        public string nombre, descripcion;
+        public string nombre, descripcion, url;
         public int año, mes, dia;
 
 
-        Boolean inom = false, sinom = false, iaño = false, sinaño = false, imes = false, sinmes = false, idias = false, sindias = false;
+        Boolean inom = false, sinom = false, iaño = false, sinaño = false, imes = false, sinmes = false, idias = false, sindias = false,
+            sindes = false, ides= false, sinurl = false, iurl = false;
 
         public void ObtenerDatos(List<Listas.Lista> listas)
         {
-            foreach (var item in listas)
+            try
             {
-                // obtener nombre de la planificación
-                if (item.lexema.Equals("Planificador"))
+                foreach (var item in listas)
                 {
-                    sinom = true;
-                }
-                if (sinom)
-                {
-                    if (item.lexema.Equals(":"))
+                    // obtener nombre de la planificación
+                    if (item.lexema.Equals("Planificador"))
                     {
-                        inom = true;
-                        sinom = false;
+                        sinom = true;
                     }
-                }
-                if (inom)
-                {
-                    if (item.tkn.Equals("Cadena"))
+                    if (sinom)
                     {
-                        nombre = item.lexema;
-                        inom = false;
+                        if (item.lexema.Equals(":"))
+                        {
+                            inom = true;
+                            sinom = false;
+                        }
                     }
-                }
+                    if (inom)
+                    {
+                        if (item.tkn.Equals("Cadena"))
+                        {
+                            nombre = item.lexema;
+                            inom = false;
+                        }
+                    }
 
-                //Obtener año
-                if (item.lexema.Equals("Año"))
-                {
-                    sinaño = true;
-                }
-                if (sinaño)
-                {
-                    if (item.lexema.Equals(":"))
+                    //Obtener año
+                    if (item.lexema.Equals("Año"))
                     {
-                        sinaño = false;
-                        iaño = true;
+                        sinaño = true;
                     }
-                }
-                if (iaño)
-                {
-                    if (item.tkn.Equals("Numero."))
+                    if (sinaño)
                     {
-                        año = Convert.ToInt16(item.lexema);
-                        iaño = false;
+                        if (item.lexema.Equals(":"))
+                        {
+                            sinaño = false;
+                            iaño = true;
+                        }
                     }
-                }
+                    if (iaño)
+                    {
+                        if (item.tkn.Equals("Numero."))
+                        {
+                            año = Convert.ToInt16(item.lexema);
+                            iaño = false;
+                        }
+                    }
 
-                //Obtener mes
-                if (item.lexema.Equals("Mes"))
-                {
-                    sinmes = true;
-                }
-                if (sinmes)
-                {
-                    if (item.lexema.Equals(":"))
+                    //Obtener mes
+                    if (item.lexema.Equals("Mes"))
                     {
-                        imes = true;
-                        sinmes = false;
+                        sinmes = true;
                     }
-                }
-                if (imes)
-                {
-                    if (item.tkn.Equals("Numero."))
+                    if (sinmes)
                     {
-                        mes = Convert.ToInt16(item.lexema);
-                        imes = false;
+                        if (item.lexema.Equals(":"))
+                        {
+                            imes = true;
+                            sinmes = false;
+                        }
                     }
-                }
+                    if (imes)
+                    {
+                        if (item.tkn.Equals("Numero."))
+                        {
+                            mes = Convert.ToInt16(item.lexema);
+                            imes = false;
+                        }
+                    }
 
-                //Obtener dia
-                if (item.lexema.Equals("Dia"))
-                {
-                    sindias = true;
-                }
-                if (sindias)
-                {
-                    if (item.lexema.Equals(":"))
+                    //Obtener dia
+                    if (item.lexema.Equals("Dia"))
                     {
-                        sindias = false;
-                        idias = true;
+                        sindias = true;
                     }
-                }
-                if (idias)
-                {
-                    if (item.tkn.Equals("Numero."))
+                    if (sindias)
                     {
-                        dia = Convert.ToInt16(item.lexema);
-                        sindias = false;
+                        if (item.lexema.Equals(":"))
+                        {
+                            sindias = false;
+                            idias = true;
+                        }
                     }
+                    if (idias)
+                    {
+                        if (item.tkn.Equals("Numero."))
+                        {
+                            dia = Convert.ToInt16(item.lexema);
+                            sindias = false;
+                        }
+                    }
+
+                    //Obtener descripcion
+                    if (item.lexema.Equals("Descripcion"))
+                    {
+                        sindes = true;
+                    }
+                    if (sindes)
+                    {
+                        if (item.lexema.Equals(":"))
+                        {
+                            sindes = false;
+                            ides = true;
+                        }
+                    }
+                    if (ides)
+                    {
+                        if (item.tkn.Equals("Cadena"))
+                        {
+                            descripcion = item.lexema;
+                            ides = false;
+                        }
+                    }
+
+                    //Obtener URL
+                    if (item.lexema.Equals("Imagen"))
+                    {
+                        sinurl = true;
+                    }
+                    if (sinurl)
+                    {
+                        if (item.lexema.Equals(":"))
+                        {
+                            sinurl = false;
+                            iurl = true;
+                        }
+                    }
+                    if (iurl)
+                    {
+                        if (item.tkn.Equals("Cadena"))
+                        {
+                            url = item.lexema;
+                            iurl = false;
+                        }
+                    }
+
                 }
             }
-            MostrarDatos();
+            catch (Exception)
+            {
+
+            }
         }
 
-        public void MostrarDatos()
+
+        public void ObtenerDatos()
         {
-            Form1 form = new Form1();
 
-            Console.WriteLine("nombre de la planificación: " + nombre);
-            Console.WriteLine("año: " + año);
-            Console.WriteLine("mes: " + mes);
-            Console.WriteLine("dia: " + dia);
-
-            form.AgregarDatos(nombre,año,mes,dia);            
         }
     }
 }

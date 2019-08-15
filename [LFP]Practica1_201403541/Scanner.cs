@@ -15,7 +15,7 @@ namespace _LFP_Practica1_201403541
 
         int idtkn;
         int nutknen = 0;
-        int idtkns = 10; // numero de tokens
+        int idtkns = 17; // numero de tokens
         int fila = 0; int columna = 0;
         string token = "";
         String concatenar = ""; String Etoken = "";
@@ -157,15 +157,43 @@ namespace _LFP_Practica1_201403541
                     break;
 
                 case ":":
-                    token = "Palabra Reservada"; idtkn = 8;
+                    token = "Signo dos puntos"; idtkn = 8;
                     break;
 
                 case "{":
-                    token = "Palabra Reservada"; idtkn = 9;
+                    token = "Signo llave abierto"; idtkn = 9;
                     break;
 
                 case "}":
-                    token = "Palabra Reservada"; idtkn = 10;
+                    token = "Signo llave cerrado"; idtkn = 10;
+                    break;
+
+                case "(":
+                    token = "Signo parentesis abierto"; idtkn = 11;
+                    break;
+
+                case ")":
+                    token = "Signo parentesis cerrado"; idtkn = 12;
+                    break;
+
+                case "<":
+                    token = "Signo <"; idtkn=13;
+                    break;
+
+                case ">":
+                    token = "Signo >"; idtkn = 14;
+                    break;
+
+                case ";":
+                    token = "Signo punto y coma"; idtkn = 15;
+                    break;
+
+                case "[":
+                    token = "Signo corchete abierto"; idtkn = 16;
+                    break;
+
+                case "]":
+                    token = "Signo corchete cerrado"; idtkn = 17;
                     break;
 
                 default:

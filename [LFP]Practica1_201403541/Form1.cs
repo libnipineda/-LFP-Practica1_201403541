@@ -14,12 +14,12 @@ namespace _LFP_Practica1_201403541
     public partial class Form1 : Form
     {
         int a = 2; // Genera las pestañas
-        
+        TreeNode nombre, year, month, day;
 
         public Form1()
         {
             InitializeComponent();
-            treeView1.Nodes.Clear();
+            treeView1.NodeMouseClick += new TreeNodeMouseClickEventHandler(treeView1_NodeMouseClick);
         }
 
         private void nuevaPestañaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,8 +120,7 @@ namespace _LFP_Practica1_201403541
             RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
             valor.Lexico(texto.Text);
             valor.Reporte1();
-            //valor.Reporte2();
-            NodoRaiz();
+            //valor.Reporte2();            
         }
         
         // Codigo para pintar las palbras        
@@ -196,6 +195,23 @@ namespace _LFP_Practica1_201403541
             valor = "9";
             indice = richTextBox1.Text.IndexOf(valor);
             pintaNumeros(indice, comparar);            
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            try
+            {
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {            
+
         }
 
         public void pintaReservadas(int pintar, String comparar)
@@ -281,23 +297,5 @@ namespace _LFP_Practica1_201403541
             }
         }
 
-        // Treeview        
-        String hola; int year, month, day;
-        public void AgregarDatos(String dato,int año, int mes, int dia)
-        {
-            hola = dato;
-            year = año;
-            month = mes;
-            day = dia;
-            //Console.WriteLine("Form1 metodo agregar datos nombre: " + hola + " año: " + year + " mes: "+ month + " dia: "+day);                 
-        }
-
-        public void NodoRaiz()
-        {
-            // ------------------- Funcionamiento del TreeView1 -------------------
-            treeView1.BeginUpdate();
-            treeView1.Nodes.Add("Hola esto es una prueba");
-            treeView1.EndUpdate();            
-        }
     }    
 }
