@@ -8,16 +8,25 @@ namespace _LFP_Practica1_201403541
 {
     class Nombre
     {
+        private string nombre;
         private int año;
-        private List<Año> ListaAño;
+        private int mes;
+        private int dia;
+        private List<Descripcion> ListaDocumentos;
 
-        public Nombre(int año)
+        public Nombre(string nombre,int año, int mes, int dia)
         {
+            this.Nombres = nombre;
             this.Año = año;
-            ListaAño1 = new List<Año>();
+            this.Mes = mes;
+            this.Dia = dia;
+            ListaDocumentos1 = new List<Descripcion>();
         }
 
+        public string Nombres { get => nombre; set => nombre = value; }
         public int Año { get => año; set => año = value; }
-        internal List<Año> ListaAño1 { get => ListaAño; set => ListaAño = value; }
+        public int Mes { get => mes; set => mes = value; }
+        public int Dia { get => dia; set => dia = value; }
+        internal List<Descripcion> ListaDocumentos1 { get => ListaDocumentos; set => ListaDocumentos = value; }
     }
 }

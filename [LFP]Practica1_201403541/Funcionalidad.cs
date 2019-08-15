@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace _LFP_Practica1_201403541
 {
@@ -11,9 +12,13 @@ namespace _LFP_Practica1_201403541
         public string nombre, descripcion, url;
         public int año, mes, dia;
 
-
         Boolean inom = false, sinom = false, iaño = false, sinaño = false, imes = false, sinmes = false, idias = false, sindias = false,
             sindes = false, ides= false, sinurl = false, iurl = false;
+
+        List<Nombre> Planificacion = new List<Nombre>();
+        List<Descripcion> AUX = new List<Descripcion>();
+        Nombre Obtener;
+        Descripcion Listar;
 
         public void ObtenerDatos(List<Listas.Lista> listas)
         {
@@ -38,7 +43,7 @@ namespace _LFP_Practica1_201403541
                     {
                         if (item.tkn.Equals("Cadena"))
                         {
-                            nombre = item.lexema;
+                            nombre = item.lexema;                           
                             inom = false;
                         }
                     }
@@ -152,19 +157,24 @@ namespace _LFP_Practica1_201403541
                             iurl = false;
                         }
                     }
-
                 }
+                ObtenerDatos();
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Error lexico, no se puede agregar al TreeView.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
+        }        
 
         public void ObtenerDatos()
         {
+            Obtener = new Nombre(nombre, año, mes, dia);
+            Listar = new Descripcion(descripcion,url);
+            Planificacion.Add(Obtener);
+            AUX.Add(Listar);
 
+            Console.WriteLine("Datos lista planificacion: " +nombre +" "+año +" "+mes+" "+dia);
+            Console.WriteLine("Datos lista descripcion: "+descripcion+ " " +url);
         }
     }
 }

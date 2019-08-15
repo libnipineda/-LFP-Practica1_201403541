@@ -15,6 +15,7 @@ namespace _LFP_Practica1_201403541
     {
         int a = 2; // Genera las pestañas
         TreeNode nombre, year, month, day;
+        string direcciones = @"C:\Users\libni\OneDrive\Escritorio";        
 
         public Form1()
         {
@@ -120,7 +121,8 @@ namespace _LFP_Practica1_201403541
             RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
             valor.Lexico(texto.Text);
             valor.Reporte1();
-            //valor.Reporte2();            
+            //valor.Reporte2();
+            VisualizarTree();
         }
         
         // Codigo para pintar las palbras        
@@ -295,6 +297,34 @@ namespace _LFP_Practica1_201403541
             {
                 Console.WriteLine("Error en metodo pintaCadena");
             }
+        }
+
+        // Funcionalidad del treeView
+        private List<Nombre> ListaPlan;
+
+        public void VisualizarTree()
+        {            
+            for (int i =0; i < ListaPlan.Count; i++)
+            {
+                nombre.Text = ListaPlan[i].Nombres.ToString();
+                year.Text = ListaPlan[i].Año.ToString();
+                month.Text = ListaPlan[i].Mes.ToString();
+                day.Text = ListaPlan[i].Dia.ToString();
+
+                List<Descripcion> temp = ListaPlan[i].ListaDocumentos1;
+                for (int j = 0; j < temp.Count; j++)
+                {
+                    TreeNode des = new TreeNode();
+                    des.Text = temp[j].Info;
+                    des.Tag = temp[j];
+                    day.Nodes.Add(des);
+                }
+                month.Nodes.Add(day);
+                year.Nodes.Add(month);
+                nombre.Nodes.Add(year);
+                treeView1.Nodes.Add(nombre);
+            }
+            treeView1.ExpandAll();
         }
 
     }    

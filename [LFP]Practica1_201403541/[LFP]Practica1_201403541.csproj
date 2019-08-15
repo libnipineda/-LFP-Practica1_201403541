@@ -46,9 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Año.cs" />
     <Compile Include="Descripcion.cs" />
-    <Compile Include="Dia.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -57,7 +55,6 @@
     </Compile>
     <Compile Include="Funcionalidad.cs" />
     <Compile Include="Listas\Lista.cs" />
-    <Compile Include="Mes.cs" />
     <Compile Include="Nombre.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

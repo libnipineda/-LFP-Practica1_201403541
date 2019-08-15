@@ -20,7 +20,6 @@ namespace _LFP_Practica1_201403541
         string token = "";
         String concatenar = ""; String Etoken = "";
 
-
         public void Lexico(string cadena)
         {
             int estado = 0;            
