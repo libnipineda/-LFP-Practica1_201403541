@@ -16,6 +16,8 @@ namespace _LFP_Practica1_201403541
             sindes = false, ides= false, sinurl = false, iurl = false;
 
         List<Nombre> Planificacion = new List<Nombre>();
+        List<Nuevo> Prueba = new List<Nuevo>();
+
         Nombre Obtener; Descripcion Listar;
 
         public void ObtenerDatos(List<Listas.Lista> listas)
@@ -171,20 +173,13 @@ namespace _LFP_Practica1_201403541
             
             Listar = new Descripcion(informacion, link);
             Obtener.ListaDocumentos1.Add(Listar);
-            VerLista();
+          
+            Nuevo temp = new Nuevo(nombre, año, mes, dia);
+            Prueba.Add(temp);
+
             //Console.WriteLine("Datos lista planificacion: " +nombre +" "+año +" "+mes+" "+dia);
             //Console.WriteLine("Datos lista descripcion: "+informacion+ " " +link);
         }
 
-        public void VerLista()
-        {
-            foreach (var item in Planificacion)
-            {
-                Console.WriteLine(item.Nombres);
-                Console.WriteLine(item.Año);
-                Console.WriteLine(item.Mes);
-                Console.WriteLine(item.Dia);
-            }
-        }
     }
 }
