@@ -12,6 +12,7 @@ namespace _LFP_Practica1_201403541
     {
         List<Listas.Lista> ListaA = new List<Listas.Lista>();
         List<Listas.Elista> ListaB = new List<Listas.Elista>();
+        public List<Nombre> Planificacion = new List<Nombre>();
 
         int idtkn;
         int nutknen = 0;
@@ -233,7 +234,6 @@ namespace _LFP_Practica1_201403541
         {
             try
             {
-                MessageBox.Show("Espere en un momento se abrira el reporte de errores", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Reportes.Html html = new Reportes.Html();
                 html.ReporteEtoken(ListaB);
                 Process.Start(@"C:\Users\libni\OneDrive\Escritorio\ReporteError.html");
@@ -247,7 +247,7 @@ namespace _LFP_Practica1_201403541
         public void EnviarDatos()
         {
             Funcionalidad fun = new Funcionalidad();
-            fun.ObtenerDatos(ListaA);            
+            Planificacion = fun.ObtenerDatos(ListaA);            
         }        
     }
 }

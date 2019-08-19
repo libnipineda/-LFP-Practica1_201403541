@@ -125,7 +125,7 @@ namespace _LFP_Practica1_201403541
             valor.Reporte1();
             valor.Reporte2();
             //Metodo para insertar datos al treeView
-            VisualizarTree();
+            VisualizarTree(valor.Planificacion);
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -306,38 +306,41 @@ namespace _LFP_Practica1_201403541
             }
         }
 
-        // Funcionalidad del treeView
-        Nombre tem;        
+        // Funcionalidad del treeView     
 
-        public void VisualizarTree()
-        {            
+        public void VisualizarTree(object plan)
+        {
+            List<Nombre> plan2 = (List < Nombre >) plan;            
+            TreeNode nombre = new TreeNode();
+            TreeNode year = new TreeNode();
+            TreeNode month = new TreeNode();
+            TreeNode day = new TreeNode();            
 
-            treeView1.Nodes.Add("Hola");
-            //TreeNode nombre = new TreeNode();
-            //TreeNode year = new TreeNode();
-            //TreeNode month = new TreeNode();
-            //TreeNode day = new TreeNode();
-            //try
-            //{
-            //    treeView1.BeginUpdate();
-            //    nombre.Text = tem.Nombres;
-            //    year.Text = Convert.ToString(tem.Año);
-            //    month.Text = Convert.ToString(tem.Mes);
-            //    day.Text = Convert.ToString(tem.Dia);
+            foreach (Nombre tem in plan2)
+            {
+                try
+                {
+                    treeView1.BeginUpdate();
+                    nombre.Text = tem.Nombres;
+                    year.Text = Convert.ToString(tem.Año);
+                    month.Text = Convert.ToString(tem.Mes);
+                    day.Text = Convert.ToString(tem.Dia);
 
-            //    month.Nodes.Add(day);
-            //    year.Nodes.Add(month);
-            //    nombre.Nodes.Add(year);
+                    month.Nodes.Add(day);
+                    year.Nodes.Add(month);
+                    nombre.Nodes.Add(year);
 
-            //    treeView1.Nodes.Add(nombre);
-            //    treeView1.ExpandAll();
-            //    treeView1.EndUpdate();
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("La lista se encuentra vacia, o encontramos un error, intente de nuevo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-        }     
+                    treeView1.Nodes.Add(nombre);
+                    treeView1.ExpandAll();
+                    treeView1.EndUpdate();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("La lista se encuentra vacia, o encontramos un error, intente de nuevo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
 
     }    
 }

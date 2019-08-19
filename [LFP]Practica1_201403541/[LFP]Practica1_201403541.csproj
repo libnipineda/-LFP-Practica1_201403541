@@ -56,7 +56,6 @@
     <Compile Include="Funcionalidad.cs" />
     <Compile Include="Listas\Lista.cs" />
     <Compile Include="Nombre.cs" />
-    <Compile Include="Nuevo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reportes\Html.cs" />

@@ -15,12 +15,9 @@ namespace _LFP_Practica1_201403541
         Boolean inom = false, sinom = false, iaño = false, sinaño = false, imes = false, sinmes = false, idias = false, sindias = false,
             sindes = false, ides= false, sinurl = false, iurl = false;
 
-        List<Nombre> Planificacion = new List<Nombre>();
-        List<Nuevo> Prueba = new List<Nuevo>();
-
-        Nombre Obtener; Descripcion Listar;
-
-        public void ObtenerDatos(List<Listas.Lista> listas)
+        public List<Nombre> Planificacion = new List<Nombre>();        
+        
+        public List<Nombre> ObtenerDatos(List<Listas.Lista> listas)
         {
             try
             {
@@ -43,11 +40,11 @@ namespace _LFP_Practica1_201403541
                     {
                         if (item.tkn.Equals("Cadena"))
                         {
-                            nombre = item.lexema;                           
+                            nombre = item.lexema;
                             inom = false;
                         }
                     }
-
+                    
                     //Obtener año
                     if (item.lexema.Equals("Año"))
                     {
@@ -69,7 +66,7 @@ namespace _LFP_Practica1_201403541
                             iaño = false;
                         }
                     }
-
+                    
                     //Obtener mes
                     if (item.lexema.Equals("Mes"))
                     {
@@ -154,31 +151,30 @@ namespace _LFP_Practica1_201403541
                         if (item.tkn.Equals("Cadena"))
                         {
                             link = item.lexema;
-                            iurl = false;
+                            iurl = false;                            
                         }
                     }
-                }
+                }                
                 AgregarDatos();
             }
             catch (Exception)
             {
                 MessageBox.Show("Error lexico, no se puede agregar al TreeView.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+            return Planificacion;
+         }
         
         public void AgregarDatos()
         {
-            Obtener = new Nombre(nombre, año, mes, dia);
-            Planificacion.Add(Obtener);
-            
-            Listar = new Descripcion(informacion, link);
-            Obtener.ListaDocumentos1.Add(Listar);
-          
-            Nuevo temp = new Nuevo(nombre, año, mes, dia);
-            Prueba.Add(temp);
 
-            //Console.WriteLine("Datos lista planificacion: " +nombre +" "+año +" "+mes+" "+dia);
-            //Console.WriteLine("Datos lista descripcion: "+informacion+ " " +link);
+            Nombre Obtener = new Nombre(nombre, año, mes, dia);
+            Planificacion.Add(Obtener);
+
+            Descripcion Listar = new Descripcion(informacion, link);
+            Obtener.ListaDocumentos1.Add(Listar);
+
+            Console.WriteLine("Datos lista planificacion: " + nombre + " " + año + " " + mes + " " + dia);
+            Console.WriteLine("Datos lista descripcion: " + informacion + " " + link);            
         }
 
     }
