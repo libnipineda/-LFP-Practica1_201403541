@@ -114,7 +114,8 @@ namespace _LFP_Practica1_201403541
 
         private void button1_Click(object sender, EventArgs e)
         {
-            RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];            
+            RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
+
             Pintar();
             // Datos que recibe el analizador lexico
             Scanner valor = new Scanner();
