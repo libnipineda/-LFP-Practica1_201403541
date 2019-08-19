@@ -16,7 +16,7 @@ namespace _LFP_Practica1_201403541
         {
             this.Info = info;
             this.Url = url;
-        }
+        }        
 
         public string Info { get => info; set => info = value; }
         public string Url { get => url; set => url = value; }

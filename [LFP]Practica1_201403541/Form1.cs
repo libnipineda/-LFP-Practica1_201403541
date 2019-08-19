@@ -13,9 +13,8 @@ namespace _LFP_Practica1_201403541
 {
     public partial class Form1 : Form
     {
-        int a = 2; // Genera las pestañas
-        TreeNode nombre, year, month, day;
-        string direcciones = @"C:\Users\libni\OneDrive\Escritorio";        
+        int a = 2; // Genera las pestañas        
+        string direcciones = @"C:\Users\libni\OneDrive\Escritorio";
 
         public Form1()
         {
@@ -114,15 +113,17 @@ namespace _LFP_Practica1_201403541
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
+        {            
             Pintar();
+            // Datos que recibe el analizador lexico
             Scanner valor = new Scanner();
-
             RichTextBox texto = (RichTextBox)tabControl1.SelectedTab.Controls[0];
             valor.Lexico(texto.Text);
+            // Metodos que imprimen reportes en HTML.
             valor.Reporte1();
-            //valor.Reporte2();
-            VisualizarTree();
+            valor.Reporte2();
+            //Metodo para insertar datos al treeView
+            VisualizarTree();            
         }
         
         // Codigo para pintar las palbras        
@@ -203,11 +204,11 @@ namespace _LFP_Practica1_201403541
         {
             try
             {
-
+                label1.Text = "Prueba" + direcciones;
             }
             catch
             {
-
+                MessageBox.Show("Encontramos un error, intente de nuevo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -300,32 +301,37 @@ namespace _LFP_Practica1_201403541
         }
 
         // Funcionalidad del treeView
-        private List<Nombre> ListaPlan;
-
+        Nombre tem;
+        
         public void VisualizarTree()
-        {            
-            for (int i =0; i < ListaPlan.Count; i++)
+        {
+            //treeView1.Nodes.Add("Hola");
+            TreeNode nombre = new TreeNode();
+            TreeNode year = new TreeNode();
+            TreeNode month = new TreeNode();
+            TreeNode day = new TreeNode();
+            
+            try
             {
-                nombre.Text = ListaPlan[i].Nombres.ToString();
-                year.Text = ListaPlan[i].Año.ToString();
-                month.Text = ListaPlan[i].Mes.ToString();
-                day.Text = ListaPlan[i].Dia.ToString();
+                treeView1.BeginUpdate();
+                nombre.Text = tem.Nombres;                
+                year.Text = Convert.ToString(tem.Año);
+                month.Text = Convert.ToString(tem.Mes);
+                day.Text = Convert.ToString(tem.Dia);
 
-                List<Descripcion> temp = ListaPlan[i].ListaDocumentos1;
-                for (int j = 0; j < temp.Count; j++)
-                {
-                    TreeNode des = new TreeNode();
-                    des.Text = temp[j].Info;
-                    des.Tag = temp[j];
-                    day.Nodes.Add(des);
-                }
                 month.Nodes.Add(day);
                 year.Nodes.Add(month);
                 nombre.Nodes.Add(year);
+
                 treeView1.Nodes.Add(nombre);
+                treeView1.ExpandAll();
+                treeView1.EndUpdate();
             }
-            treeView1.ExpandAll();
-        }
+            catch (Exception)
+            {
+                MessageBox.Show("La lista se encuentra vacia, o encontramos un error, intente de nuevo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }     
 
     }    
 }

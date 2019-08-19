@@ -9,16 +9,14 @@ namespace _LFP_Practica1_201403541
 {
     class Funcionalidad
     {
-        public string nombre, descripcion, url;
+        public string nombre, informacion, link;
         public int año, mes, dia;
 
         Boolean inom = false, sinom = false, iaño = false, sinaño = false, imes = false, sinmes = false, idias = false, sindias = false,
             sindes = false, ides= false, sinurl = false, iurl = false;
 
         List<Nombre> Planificacion = new List<Nombre>();
-        List<Descripcion> AUX = new List<Descripcion>();
-        Nombre Obtener;
-        Descripcion Listar;
+        Nombre Obtener; Descripcion Listar;
 
         public void ObtenerDatos(List<Listas.Lista> listas)
         {
@@ -115,7 +113,7 @@ namespace _LFP_Practica1_201403541
                     }
 
                     //Obtener descripcion
-                    if (item.lexema.Equals("Descripcion"))
+                    if (item.lexema.Equals("Descripción"))
                     {
                         sindes = true;
                     }
@@ -131,7 +129,7 @@ namespace _LFP_Practica1_201403541
                     {
                         if (item.tkn.Equals("Cadena"))
                         {
-                            descripcion = item.lexema;
+                            informacion = item.lexema;
                             ides = false;
                         }
                     }
@@ -153,28 +151,40 @@ namespace _LFP_Practica1_201403541
                     {
                         if (item.tkn.Equals("Cadena"))
                         {
-                            url = item.lexema;
+                            link = item.lexema;
                             iurl = false;
                         }
                     }
                 }
-                ObtenerDatos();
+                AgregarDatos();
             }
             catch (Exception)
             {
                 MessageBox.Show("Error lexico, no se puede agregar al TreeView.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }        
-
-        public void ObtenerDatos()
+        }
+        
+        public void AgregarDatos()
         {
             Obtener = new Nombre(nombre, año, mes, dia);
-            Listar = new Descripcion(descripcion,url);
             Planificacion.Add(Obtener);
-            AUX.Add(Listar);
+            
+            Listar = new Descripcion(informacion, link);
+            Obtener.ListaDocumentos1.Add(Listar);
+            VerLista();
+            //Console.WriteLine("Datos lista planificacion: " +nombre +" "+año +" "+mes+" "+dia);
+            //Console.WriteLine("Datos lista descripcion: "+informacion+ " " +link);
+        }
 
-            Console.WriteLine("Datos lista planificacion: " +nombre +" "+año +" "+mes+" "+dia);
-            Console.WriteLine("Datos lista descripcion: "+descripcion+ " " +url);
+        public void VerLista()
+        {
+            foreach (var item in Planificacion)
+            {
+                Console.WriteLine(item.Nombres);
+                Console.WriteLine(item.Año);
+                Console.WriteLine(item.Mes);
+                Console.WriteLine(item.Dia);
+            }
         }
     }
 }
